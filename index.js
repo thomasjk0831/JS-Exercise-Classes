@@ -108,14 +108,22 @@ class Car {
      }
      else
      {
-       
+       this.odometer += this.tank * this.milesPerGallon
        this.tank = 0;
-
+       return `I ran out of fuel at ${this.odometer} miles!`
      }
    }
 
 }
 
+const Ford = new Car("Mustang", 10)
+console.log(Ford)
+Ford.fill(2);
+console.log(Ford)
+Ford.drive(15)
+console.log(Ford)
+console.log(Ford.drive(15))
+console.log(Ford)
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -157,10 +165,27 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+   constructor(object){
+     super(object)
+     this.specialty = object.specialty;
+     this.favLanguage = object.favLanguage;
+     this.catchPhrase = object.catchPhrase;
+   }
 
-}
+   demo = function(subject){ return `Today we are learning about ${subject}`};
+ 
+   grade = function(student, subject){
+    return `${student.name} receives a perfect score on ${subject}.`
+   }
 
+   }
+
+
+const jerry = new Instructor({name: "Jerry", age: "35", specialty: "UI", location: "New York", favLanguage: "Java", catchPhrase: "Oops!"}) 
+console.log(jerry)
+console.log(jerry.demo("Math"))
+console.log(jerry.grade(jerry, "Java"))
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -177,6 +202,7 @@ class Instructor {
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 class Student {
+  
 
 }
 
