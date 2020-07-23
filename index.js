@@ -41,8 +41,35 @@ class Airplane {
 */
 
 class Person {
+  constructor(name, age){
+    this.stomach = [];
+    this.name = name;
+    this.age = age;
+  }
 
+  eat(someFood){
+    if(this.stomach.length < 10)
+    this.stomach.push(someFood)
+  }
+
+  poop(){
+    this.stomach = [];
+  }
+
+  toString(){
+    return `${this.name}, ${this.age}`
+  }
 }
+
+
+const Mary = new Person("Mary", 50)
+console.log(Mary)
+Mary.eat("pizza");
+Mary.eat("hot dog")
+console.log(Mary)
+Mary.poop();
+console.log(Mary)
+console.log(Mary.toString())
 
 /*
   TASK 2
@@ -59,6 +86,33 @@ class Person {
 */
 
 class Car {
+   constructor(model, milesPerGallon){
+    this.model = model;
+    this.tank = 0;
+    this.milesPerGallon = milesPerGallon;
+    this.odometer = 0;
+   }
+
+   fill(gallons){
+     this.tank += gallons;
+   }
+
+   drive(distance){
+     if(this.tank >= distance/this.milesPerGallon)
+     {
+       for(let i=1; i<=distance; i++)
+         {
+         this.odometer++;
+         }
+         this.tank -= distance/this.milesPerGallon
+     }
+     else
+     {
+       
+       this.tank = 0;
+
+     }
+   }
 
 }
 
@@ -75,9 +129,20 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
+    constructor(object){
+      this.name = object.name;
+      this.age = object.age;
+      this.location = object.location;
+    }
 
-}
+    speak(){
+       return `Hello my name is ${this.name}, I am from ${this.location}`;
+    }
+  }
 
+  const Joe = new Lambdasian({name: "Joe", age: "18", location: "New York"});
+  console.log(Joe);
+  console.log(Joe.speak());
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
